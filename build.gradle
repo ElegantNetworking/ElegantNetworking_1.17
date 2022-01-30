@@ -149,11 +149,6 @@ artifacts {
     archives javadocJar
 }
 
-signing {
-    required { project.hasProperty("signing.keyId") }
-    sign configurations.archives
-}
-
 publishing {
     repositories {
         maven {
@@ -164,7 +159,7 @@ publishing {
             def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
             def localRepoUrl = localRepo.getAbsolutePath()
 
-            def usedLocation = localRepoUrl
+            def usedLocation = releasesRepoUrl
             url = usedLocation
 
             if (usedLocation != localRepoUrl && project.hasProperty("ossrhUsername")) {
@@ -212,4 +207,10 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    required { project.hasProperty("signing.keyId") }
+    //sign configurations.archives
+    sign publishing.publications.mavenJava
 }
