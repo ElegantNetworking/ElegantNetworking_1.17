@@ -4,11 +4,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'net.minecraftforge.gradle:ForgeGradle:5.1.27'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -28,17 +27,6 @@ compileJava {
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    // The mappings can be changed at any time and must be in the following format.
-    // Channel:   Version:
-    // snapshot   YYYYMMDD   Snapshot are built nightly.
-    // stable     #          Stables are built at the discretion of the MCP team.
-    // official   MCVersion  Official field/method names from Mojang mapping files
-    //
-    // You must be aware of the Mojang license when using the 'official' mappings.
-    // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
-    //
-    // Use non-default mappings at your own risk. They may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: 'official', version: '1.17.1'
 
 
@@ -90,7 +78,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenCentral()
-    maven { url = 'https://files.minecraftforge.net/maven' }
+    maven { url = 'https://maven.minecraftforge.net/' }
     maven {
         name = "chickenbones"
         url = "https://chickenbones.net/maven" //or https://maven.covers1624.net/
@@ -104,8 +92,8 @@ configurations {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.17.1-37.0.103'
 
-    implementation(project(':ElegantNetworkingCommon')) { transitive = false }
-    extraLibs project(':ElegantNetworkingCommon')
+    implementation(project(':_ElegantNetworkingCommon')) { transitive = false }
+    extraLibs project(':_ElegantNetworkingCommon')
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20', project(':ElegantNetworkingAnnotationProcessor')
@@ -167,8 +155,8 @@ publishing {
 
             if (usedLocation != localRepoUrl && project.hasProperty("ossrhUsername")) {
                 credentials {
-                    username = ossrhUsername
-                    password = ossrhPassword
+                    username = "$ossrhUsername"
+                    password = "$ossrhPassword"
                 }
             }
         }
