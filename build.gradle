@@ -51,6 +51,7 @@ minecraft {
             mods {
                 examplemod {
                     source sourceSets.main
+                    source project(':_ElegantNetworkingCommon').sourceSets.main
                 }
             }
         }
@@ -63,6 +64,7 @@ minecraft {
             mods {
                 examplemod {
                     source sourceSets.main
+                    source project(':_ElegantNetworkingCommon').sourceSets.main
                 }
             }
         }
@@ -76,6 +78,7 @@ minecraft {
             mods {
                 examplemod {
                     source sourceSets.main
+                    source project(':_ElegantNetworkingCommon').sourceSets.main
                 }
             }
         }
