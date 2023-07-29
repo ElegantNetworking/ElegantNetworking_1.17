@@ -4,13 +4,13 @@ loaderVersion="[37,)"
 
 license="LGPL-3.0 License"
 
-issueTrackerURL="https://github.com/ElegantNetworking/ElegantNetworking_1.16/issues"
+issueTrackerURL="https://github.com/ElegantNetworking/ElegantNetworking_1.17/issues"
 
 [[mods]] 
 
 modId="elegant_networking"
 
-version="3.14"
+version="${mod_version}"
 
 displayName="ElegantNetworking"
 
